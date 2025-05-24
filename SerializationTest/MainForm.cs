@@ -55,5 +55,18 @@ namespace SerializationTest
                 await RefreshDataGridAsync();
             }
         }
+
+        private async void buttonAge_Click(object sender, EventArgs e)
+        {
+            var patients = await _patientService.GetPatientOlderThan((int)numericUpDown.Value);
+            dataGridView.DataSource = null;
+            dataGridView.DataSource = patients;
+        }
+
+        private async void buttonRoom_Click(object sender, EventArgs e)
+        {
+            var numberOfRoom = await _patientService.GetMostPopulatedRoom();
+            MessageBox.Show($"Номер самой заполненной палаты: {numberOfRoom}.");
+        }
     }
 }

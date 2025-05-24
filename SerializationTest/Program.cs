@@ -15,6 +15,7 @@ namespace SerializationTest
         {
             var host = CreateHostBuilder().Build();
 
+
             var patientService = host.Services.GetRequiredService<IPatientService>();
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
@@ -27,6 +28,7 @@ namespace SerializationTest
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddScoped<IPatientService, PatientService>();
+
                 });
     }
 }

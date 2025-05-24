@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace IService.Dtos
 {
-    public record PatientDtoForCreate(string Name, string Description, string Desease) { }
+    public record PatientDtoForCreate(string Name, string Description, string Desease, int Age, int NumberOfRoom) { }
 }

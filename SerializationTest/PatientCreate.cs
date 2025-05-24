@@ -37,7 +37,9 @@ namespace View
             PatientDtoForCreate patientDto = new PatientDtoForCreate(
                 textBoxName.Text,
                 textBoxDescription.Text,
-                textBoxDisease.Text
+                textBoxDisease.Text,
+                (int)numericUpDownAge.Value,
+                (int)numericUpDownRoom.Value
             );
             _patientService.AddPatient(patientDto);
             MessageBox.Show("Пациент успешно добавлен!");

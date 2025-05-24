@@ -31,6 +31,8 @@ namespace Service
                 Name = patientDto.Name,
                 Description = patientDto.Description,
                 Disease = patientDto.Desease,
+                Age = patientDto.Age,
+                NumberOfRoom = patientDto.NumberOfRoom,
             });
 
             await CreateJsonFile(patients);
@@ -72,6 +74,28 @@ namespace Service
 
                 return patients;
             }
+        }
+
+        public async Task<int> GetMostPopulatedRoom()
+        {
+            var patients = await GetAllPatients();
+            int numberOfRoom = patients
+                .GroupBy(x => x.NumberOfRoom)
+                .OrderByDescending(g => g.Count())
+                .Select(g => g.Key)
+                .FirstOrDefault();
+
+            return numberOfRoom;
+        }
+
+        public async Task<List<Patient>> GetPatientOlderThan(int age)
+        {
+            List<Patient> patients = await GetAllPatients();
+            patients = (from patient in patients
+                       where patient.Age > age
+                       select patient).ToList();
+                      
+            return patients;
         }
 
         private void CreateFileIfNotExist()

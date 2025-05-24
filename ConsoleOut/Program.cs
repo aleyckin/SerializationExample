@@ -26,7 +26,34 @@ while (true)
             Console.Write("Введите название болезни: ");
             string disease = Console.ReadLine();
 
-            PatientDtoForCreate patientDto = new PatientDtoForCreate(name, description, disease);
+            Console.Write("Введите возраст пациента: ");
+            int age = 0;
+            try
+            {
+                age = int.Parse(Console.ReadLine());
+            }
+            catch { 
+                Console.WriteLine("Нужно ввести число.\n");
+                break;
+            }
+
+            Console.Write("Введите номер палаты(от 1 до 5): ");
+            int numberOfRoom = 0;
+            try
+            {
+                age = int.Parse(Console.ReadLine());
+                if (age < 1  || age > 5)
+                {
+                    Console.WriteLine("Номер палаты не может быть меньше 1 или больше 5.\n");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Нужно ввести число.\n");
+                break;
+            }
+
+            PatientDtoForCreate patientDto = new PatientDtoForCreate(name, description, disease, age, numberOfRoom);
             await patientService.AddPatient(patientDto);
             break;
 
