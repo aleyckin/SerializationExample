@@ -14,24 +14,32 @@ namespace View
 {
     public partial class PatientCreate : Form
     {
+        /// <summary>
+        /// DI контейнер для получения сервиса работы с пациентами.
+        /// </summary>
         private readonly IPatientService _patientService;
+
+        /// <summary>
+        /// Конструктор формы для создания нового пациента.
+        /// </summary>
         public PatientCreate(IPatientService patientService)
         {
             InitializeComponent();
             _patientService = patientService;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Обработчик события нажатия кнопки "Назад". Закрывает форму без сохранения изменений.
+        /// </summary>
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки "Добавить". Создает нового пациента и сохраняет его в базе данных.
+        /// </summary>
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             PatientDtoForCreate patientDto = new PatientDtoForCreate(

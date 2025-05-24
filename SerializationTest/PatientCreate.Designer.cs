@@ -60,7 +60,6 @@
             labelName.Size = new Size(127, 25);
             labelName.TabIndex = 1;
             labelName.Text = "Имя пациента";
-            labelName.Click += label1_Click;
             // 
             // labelTitle
             // 

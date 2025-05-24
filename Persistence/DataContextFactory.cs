@@ -10,6 +10,9 @@ namespace Persistence
 {
     public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
     {
+        /// <summary>
+        /// Создает экземпляр контекста базы данных для использования в инструментах миграции и других сценариях, где требуется DbContext.
+        /// </summary>
         public DataContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
